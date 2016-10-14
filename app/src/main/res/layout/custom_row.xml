@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="5dp">
+
+    <ImageView
+        android:id="@+id/imageIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/noteone"/>
+
+    <TextView
+        android:text="Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:id="@+id/tvTitle"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imageIcon"
+        android:layout_toEndOf="@+id/imageIcon"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:text="Note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitle"
+        android:layout_marginTop="6dp"
+        android:id="@+id/tvNote"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_alignLeft="@+id/tvTitle"
+        android:layout_alignStart="@+id/tvTitle"
+        android:ellipsize="end"
+        android:singleLine="true"/>
+
+</RelativeLayout>
