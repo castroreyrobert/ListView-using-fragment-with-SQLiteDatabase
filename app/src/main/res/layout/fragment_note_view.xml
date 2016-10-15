@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="12dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    tools:context="com.example.castroreyrobert.fragmentlistview.NoteViewFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/imageIcon2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/noteone"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imageIcon2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/imageIcon2">
+
+        <TextView
+            android:id="@+id/tvTitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_below="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true">
+
+        <TextView
+            android:id="@+id/tNote2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notes"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"/>
+
+    </ScrollView>
+
+</RelativeLayout>

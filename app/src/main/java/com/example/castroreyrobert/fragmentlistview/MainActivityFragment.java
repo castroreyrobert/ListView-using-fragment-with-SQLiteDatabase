@@ -1,12 +1,11 @@
 package com.example.castroreyrobert.fragmentlistview;
 
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -48,6 +47,9 @@ public class MainActivityFragment extends ListFragment {
                 NoteModel.Category.TECHNICAL));
         noteModelArrayList.add(new NoteModel("Good Job!", "Have some relaxation",
                 NoteModel.Category.PERSONAL));
+        noteModelArrayList.add(new NoteModel("Title is the most important part of the note",
+                "Body describes all you write in the note and the best part of the note. It also considers the body of the note",
+                NoteModel.Category.PERSONAL));
 
         noteAdapter = new NoteAdapter(getActivity(),noteModelArrayList);
 
@@ -60,9 +62,20 @@ public class MainActivityFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-
-
-        Toast.makeText(getActivity(), String.valueOf(l.getItemAtPosition(position)), Toast.LENGTH_SHORT).show();
         super.onListItemClick(l, v, position, id);
+        launchNoteDetailActivity(position);
+    }
+
+    private void launchNoteDetailActivity(int position){
+        NoteModel noteModel = (NoteModel) getListAdapter().getItem(position);
+
+        Intent intent = new Intent(getActivity(), NoteDetailActivity.class);
+        intent.putExtra(MainActivity.NOTE_TITLE, noteModel.getTitle());
+        intent.putExtra(MainActivity.NOTE_NOTE, noteModel.getNote());
+        intent.putExtra(MainActivity.NOTE_CATEGORY, noteModel.getCategory());
+        intent.putExtra(MainActivity.NOTE_ID, noteModel.getId());
+
+        startActivity(intent);
+
     }
 }

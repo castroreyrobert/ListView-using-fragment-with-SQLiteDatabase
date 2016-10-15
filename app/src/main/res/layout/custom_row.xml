@@ -24,7 +24,8 @@
         android:layout_toRightOf="@+id/imageIcon"
         android:layout_toEndOf="@+id/imageIcon"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:ellipsize="end"/>
+        android:ellipsize="end"
+        android:singleLine="true"/>
 
     <TextView
         android:text="Note"
@@ -37,6 +38,7 @@
         android:layout_alignLeft="@+id/tvTitle"
         android:layout_alignStart="@+id/tvTitle"
         android:ellipsize="end"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:layout_marginBottom="2dp"/>
 
 </RelativeLayout>

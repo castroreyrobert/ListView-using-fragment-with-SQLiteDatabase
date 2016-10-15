@@ -25,6 +25,10 @@ public class NoteModel {
         this.category = category;
     }
 
+    public long getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }

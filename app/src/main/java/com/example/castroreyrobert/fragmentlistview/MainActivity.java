@@ -11,6 +11,11 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String NOTE_ID = "com.example.castroreyrobert.fragmentlistview.ID";
+    public static final String NOTE_TITLE = "com.example.castroreyrobert.fragmentlistview.TITLE";
+    public static final String NOTE_NOTE = "com.example.castroreyrobert.fragmentlistview.NOTE";
+    public static final String NOTE_CATEGORY = "com.example.castroreyrobert.fragmentlistview.CATEGORY";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
