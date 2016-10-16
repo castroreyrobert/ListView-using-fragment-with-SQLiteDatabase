@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="12dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    tools:context="com.example.castroreyrobert.fragmentlistview.NoteEditFragment">
+
+    <ImageButton
+        android:id="@+id/imageButtonIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/noteone"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"/>
+
+    <ScrollView
+        android:layout_marginBottom="20dp"
+        android:id="@+id/sV1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imageButtonIcon"
+        android:layout_toEndOf="@+id/imageButtonIcon">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:text="Title"
+            android:ems="10"
+            android:id="@+id/etTitle"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:id="@+id/sV2"
+        android:layout_above="@+id/buttonSaveNote"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sV1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="5dp"
+        android:layout_alignParentLeft="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:text="Note"
+            android:ems="10"
+            android:textSize="18sp"
+            android:id="@+id/etNote"
+            android:minLines="3"
+            android:gravity="top"
+            android:background="@null"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+    </ScrollView>
+
+    <Button
+        android:text="@string/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonSaveNote"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="12dp"
+        />
+
+</RelativeLayout>
