@@ -7,6 +7,7 @@ public class NoteModel {
     private long id, dateCreatedMilli;
     private Category category;
 
+    //Setting the title of Category
     public enum Category{PERSONAL, TECHNICAL, QUOTE, FINANCE}
 
     public NoteModel(String title, String note, Category category) {
@@ -49,8 +50,10 @@ public class NoteModel {
                 + " Date: ";
     }
 
+    //Getting the category and return the specific image
     public int getAssociatedDrawable(){return categoryToDrawable(category);}
 
+    //Setting the image into what specific category
     public static int categoryToDrawable(Category noteCategory){
 
         switch (noteCategory){

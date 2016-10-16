@@ -4,18 +4,16 @@ package com.example.castroreyrobert.fragmentlistview;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class MainActivityFragment extends ListFragment {
 
     private ArrayList<NoteModel> noteModelArrayList;
@@ -58,12 +56,40 @@ public class MainActivityFragment extends ListFragment {
        /* //setting the divider of the listview
         getListView().setDivider(ContextCompat.getDrawable(getActivity(), android.R.color.darker_gray));
         getListView().setDividerHeight(1);*/
+
+        //Displaying the menu if the user long click the item in the listview
+        registerForContextMenu(getListView());
     }
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         launchNoteDetailActivity(position);
+    }
+
+    //Setting the long_press_menu when the user long click the listview
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        //Setting the name of the menu
+        MenuInflater menuInflater = getActivity().getMenuInflater();
+        menuInflater.inflate(R.menu.long_press_menu,menu);
+    }
+
+
+    //If the user clicks the menu
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.edit:
+                Toast.makeText(getActivity(), "We pressed edit", Toast.LENGTH_SHORT).show();
+                return true;
+        }
+
+        return super.onContextItemSelected(item);
     }
 
     private void launchNoteDetailActivity(int position){

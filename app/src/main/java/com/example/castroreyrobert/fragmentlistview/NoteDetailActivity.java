@@ -15,11 +15,13 @@ public class NoteDetailActivity extends AppCompatActivity {
         createAddFragment();
     }
 
+    //Adding the fragment dynamically
     private void createAddFragment(){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         NoteViewFragment noteViewFragment = new NoteViewFragment();
+        //Setting the name of the layout of the fragment
         fragmentTransaction.add(R.id.activity_note_detail_linearlayout, noteViewFragment, "NOTE_VIEW_FRAGMENT");
 
         //setting the toolbar title
