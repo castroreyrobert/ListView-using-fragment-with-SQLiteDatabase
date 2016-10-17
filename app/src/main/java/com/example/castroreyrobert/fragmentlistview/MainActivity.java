@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
     public static final String NOTE_TITLE = "com.example.castroreyrobert.fragmentlistview.TITLE";
     public static final String NOTE_NOTE = "com.example.castroreyrobert.fragmentlistview.NOTE";
     public static final String NOTE_CATEGORY = "com.example.castroreyrobert.fragmentlistview.CATEGORY";
+    public static final String FRAGMENT_TO_LAUNCH = "com.example.castroreyrobert.fragmentlistview.FRAGMENT_TO_LAUNCH";
+
+    public enum FRAGMENT_TO_LOAD {VIEW, EDIT}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

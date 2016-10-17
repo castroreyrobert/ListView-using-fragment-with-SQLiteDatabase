@@ -9,6 +9,7 @@ import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -64,10 +65,10 @@ public class MainActivityFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        launchNoteDetailActivity(position);
+        launchNoteDetailActivity(MainActivity.FRAGMENT_TO_LOAD.VIEW, position);
     }
 
-    //Setting the long_press_menu when the user long click the listview
+    //Displaying the menu if the user long clicks the item in the listview
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -78,21 +79,26 @@ public class MainActivityFragment extends ListFragment {
     }
 
 
-    //If the user clicks the menu
+    //if the user clicks the menu in the menu item
     @Override
     public boolean onContextItemSelected(MenuItem item) {
 
+        //Getting the position of whatever List item I long pressed on
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int rowPosition = info.position;
+
+        //If the user clicks the specific menu item
         switch (item.getItemId()){
 
             case R.id.edit:
-                Toast.makeText(getActivity(), "We pressed edit", Toast.LENGTH_SHORT).show();
+                launchNoteDetailActivity(MainActivity.FRAGMENT_TO_LOAD.EDIT, rowPosition);
                 return true;
         }
 
         return super.onContextItemSelected(item);
     }
 
-    private void launchNoteDetailActivity(int position){
+    private void launchNoteDetailActivity(MainActivity.FRAGMENT_TO_LOAD ftl, int position){
         NoteModel noteModel = (NoteModel) getListAdapter().getItem(position);
 
         Intent intent = new Intent(getActivity(), NoteDetailActivity.class);
@@ -100,6 +106,16 @@ public class MainActivityFragment extends ListFragment {
         intent.putExtra(MainActivity.NOTE_NOTE, noteModel.getNote());
         intent.putExtra(MainActivity.NOTE_CATEGORY, noteModel.getCategory());
         intent.putExtra(MainActivity.NOTE_ID, noteModel.getId());
+
+        //Setting the fragment of which to load
+        switch (ftl){
+            case VIEW:
+                intent.putExtra(MainActivity.FRAGMENT_TO_LAUNCH, MainActivity.FRAGMENT_TO_LOAD.VIEW);
+                break;
+            case EDIT:
+                intent.putExtra(MainActivity.FRAGMENT_TO_LAUNCH, MainActivity.FRAGMENT_TO_LOAD.EDIT);
+                break;
+        }
 
         startActivity(intent);
 
