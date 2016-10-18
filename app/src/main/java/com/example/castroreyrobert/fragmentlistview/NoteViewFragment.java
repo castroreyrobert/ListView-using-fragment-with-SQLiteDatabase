@@ -33,6 +33,7 @@ public class NoteViewFragment extends Fragment {
         TextView tvTitle2 = (TextView) fragmentLayout.findViewById(R.id.tvTitle2);
         TextView tvNote2 = (TextView) fragmentLayout.findViewById(R.id.tNote2);
 
+
         //Getting the data from the intent that we pass from the MainActivity fragment
         Intent intent = getActivity().getIntent();
 

@@ -1,16 +1,23 @@
 <resources>
     <string name="app_name">FragmentListView</string>
+
+    <!-- Menu title -->
     <string name="action_settings">Settings</string>
+    <string name="action_add">Add</string>
+
 
     <!-- Fragment Title -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="toolbar_title_view">View Note</string>
     <string name="toolbar_title_edit">Edit Note</string>
+    <string name="toolbar_title_add">Add Note</string>
 
     <!-- Menu title -->
     <string name="long_press_menu">Edit</string>
 
     <!-- Buttons title -->
     <string name = "button_save">Save</string>
+
+
 
 </resources>

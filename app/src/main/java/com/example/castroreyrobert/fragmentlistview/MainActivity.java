@@ -1,5 +1,6 @@
 package com.example.castroreyrobert.fragmentlistview;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,13 +12,16 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    //STRING KEYS FOR PASSING THE DATA OF THE NOTES
     public static final String NOTE_ID = "com.example.castroreyrobert.fragmentlistview.ID";
     public static final String NOTE_TITLE = "com.example.castroreyrobert.fragmentlistview.TITLE";
     public static final String NOTE_NOTE = "com.example.castroreyrobert.fragmentlistview.NOTE";
     public static final String NOTE_CATEGORY = "com.example.castroreyrobert.fragmentlistview.CATEGORY";
-    public static final String FRAGMENT_TO_LAUNCH = "com.example.castroreyrobert.fragmentlistview.FRAGMENT_TO_LAUNCH";
 
-    public enum FRAGMENT_TO_LOAD {VIEW, EDIT}
+    //KEY FOR GETTING THE PASSING THE FRAGMENT PROPERLY
+    public static final String FRAGMENT_TO_LAUNCH = "com.example.castroreyrobert.fragmentlistview.FRAGMENT_TO_LAUNCH";
+    //KEYS FOR LOADING THE FRAGMENT PROPERLY
+    public enum FRAGMENT_TO_LOAD {VIEW, EDIT, ADD}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,13 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        //If the user clicks the menu
         if (id == R.id.action_settings) {
+            return true;
+        } else if (id == R.id.action_add){
+            Intent intent = new Intent(this, NoteDetailActivity.class);
+            intent.putExtra(FRAGMENT_TO_LAUNCH, FRAGMENT_TO_LOAD.ADD);
+            startActivity(intent);
             return true;
         }
 

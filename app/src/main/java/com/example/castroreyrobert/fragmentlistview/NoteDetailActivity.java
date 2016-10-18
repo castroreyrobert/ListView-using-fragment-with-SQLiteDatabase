@@ -8,6 +8,9 @@ import android.os.Bundle;
 
 public class NoteDetailActivity extends AppCompatActivity {
 
+    //Key for the Bundle inorder to know if where adding a new note
+    public static final String ADD_NOTE = "Add Note";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,20 @@ public class NoteDetailActivity extends AppCompatActivity {
 
                 //setting the toolbar title
                 setTitle(R.string.toolbar_title_view);
+                break;
+
+            case ADD:
+                NoteEditFragment noteAddEditFragment = new NoteEditFragment();
+                fragmentTransaction.add(R.id.activity_note_detail_linearlayout, noteAddEditFragment,
+                        "NOTE_ADD_FRAGMENT");
+
+                //Passing the value to the NoteEdit Fragment inorder to know if we need to add a new note
+                Bundle bundle = new Bundle();
+                bundle.putBoolean(ADD_NOTE, true);
+                noteAddEditFragment.setArguments(bundle);
+
+                //setting the toolbar title
+                setTitle(R.string.toolbar_title_add);
                 break;
         }
         fragmentTransaction.commit();
