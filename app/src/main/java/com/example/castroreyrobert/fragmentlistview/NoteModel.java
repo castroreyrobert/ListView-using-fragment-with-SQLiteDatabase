@@ -18,7 +18,7 @@ public class NoteModel {
         this.category = category;
     }
 
-    public NoteModel(String title, String note, Long id, Long dateCreatedMilli, Category category) {
+    public NoteModel(String title, String note, Category category, Long id, Long dateCreatedMilli) {
         this.title = title;
         this.note = note;
         this.id = id;

@@ -168,9 +168,18 @@ public class NoteEditFragment extends Fragment {
                 Toast.makeText(getActivity(), "Note Title: " + etTitle.getText().toString() + "\nNote: "
                         + etNote.getText().toString()
                         + "\nCategory: " + savedButtonCategory, Toast.LENGTH_SHORT).show();
-                Log.d("SAVE NOTE", "Note Title: " + etTitle.getText().toString() + "Note: " +
-                        etNote.getText().toString() + "\n Category: " + savedButtonCategory);
 
+                //Adds a new note
+                DBHelper dbHelper = new DBHelper(getActivity().getBaseContext());
+                dbHelper.open();
+                if (newNote){
+
+                    //If it's a new note then create a database
+                    dbHelper.addNote(etTitle.getText().toString(), etNote.getText().toString(),
+                            (savedButtonCategory == null)? NoteModel.Category.PERSONAL : savedButtonCategory);
+                }else {
+                    //Otherwise update the note
+                }
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }

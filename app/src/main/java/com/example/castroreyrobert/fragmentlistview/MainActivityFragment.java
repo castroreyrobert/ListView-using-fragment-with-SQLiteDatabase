@@ -34,21 +34,11 @@ public class MainActivityFragment extends ListFragment {
 
         setListAdapter(adapter);*/
 
-        //Adding the values of the notes
-        noteModelArrayList = new ArrayList<NoteModel>();
-        noteModelArrayList.add(new NoteModel("This is the title", "This is the note message",
-                NoteModel.Category.FINANCE));
-        noteModelArrayList.add(new NoteModel("Oh yeah!", "Need to study about SQLite Database",
-                NoteModel.Category.PERSONAL));
-        noteModelArrayList.add(new NoteModel("Nice!", "Study dynamically adding the value to the listview",
-                NoteModel.Category.QUOTE));
-        noteModelArrayList.add(new NoteModel("TODO", "Music Player",
-                NoteModel.Category.TECHNICAL));
-        noteModelArrayList.add(new NoteModel("Good Job!", "Have some relaxation",
-                NoteModel.Category.PERSONAL));
-        noteModelArrayList.add(new NoteModel("Title is the most important part of the note",
-                "Body describes all you write in the note and the best part of the note. It also considers the body of the note",
-                NoteModel.Category.PERSONAL));
+        //Adding the values of the notes from the DBHelper
+        DBHelper dbHelper = new DBHelper(getActivity().getBaseContext());
+        dbHelper.open();
+        noteModelArrayList = dbHelper.getAllNotes();
+        dbHelper.close();
 
         noteAdapter = new NoteAdapter(getActivity(),noteModelArrayList);
 
