@@ -24,6 +24,9 @@ public class NoteEditFragment extends Fragment {
     private NoteModel.Category savedButtonCategory;
     private AlertDialog categoryAlertDialogObject, confirmAlertDialogObject;
 
+    private long noteID = 0;
+
+    //Variable if the orientation change
     private static final String ORIENTATION_STATE = "Orientation Change";
 
     //variable for the Adding a new note
@@ -64,9 +67,10 @@ public class NoteEditFragment extends Fragment {
         Intent intent = getActivity().getIntent();
 
         //Setting the values from the views for this fragment
+        //Getting the values from the intent that we passed from the MainActivityFragment
         etTitle.setText(intent.getExtras().getString(MainActivity.NOTE_TITLE,""));
         etNote.setText(intent.getExtras().getString(MainActivity.NOTE_NOTE, ""));
-
+        noteID = intent.getExtras().getLong(MainActivity.NOTE_ID,0);
 
         //If the user change the orientation, the imageButton should stay what it has
         if (savedButtonCategory != null){
@@ -179,7 +183,10 @@ public class NoteEditFragment extends Fragment {
                             (savedButtonCategory == null)? NoteModel.Category.PERSONAL : savedButtonCategory);
                 }else {
                     //Otherwise update the note
+                    dbHelper.updateNote(noteID, etTitle.getText().toString(), etNote.getText().toString(),
+                            savedButtonCategory);
                 }
+                dbHelper.close();
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }

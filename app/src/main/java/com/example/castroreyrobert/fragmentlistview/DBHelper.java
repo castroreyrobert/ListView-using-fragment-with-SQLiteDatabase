@@ -69,8 +69,20 @@ public class DBHelper{
         return noteModel;
     }
 
+    //This method gets called if you want to edit the existing note
+    public long updateNote(long idToUpdate, String title, String note, NoteModel.Category category){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_TITLE, title);
+        contentValues.put(COL_NOTE, note);
+        contentValues.put(COL_CATEGORY, category.name() + "");
+        contentValues.put(COL_DATE, Calendar.getInstance().getTimeInMillis() + "");
 
-    //This method called in displaying the notes in the ListView
+        return db.update(TB_NAME, contentValues, COL_ID + " = " + idToUpdate, null);
+
+    }
+
+
+    //This method gets called in displaying the notes in the ListView
     public ArrayList<NoteModel> getAllNotes(){
         ArrayList<NoteModel> arrayNotes = new ArrayList<NoteModel>();
 
