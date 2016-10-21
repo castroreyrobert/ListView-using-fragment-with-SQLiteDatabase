@@ -13,7 +13,8 @@
     <string name="toolbar_title_add">Add Note</string>
 
     <!-- Menu title -->
-    <string name="long_press_menu">Edit</string>
+    <string name="long_press_menu_edit">Edit</string>
+    <string name="long_press_menu_delete">Delete</string>
 
     <!-- Buttons title -->
     <string name = "button_save">Save</string>

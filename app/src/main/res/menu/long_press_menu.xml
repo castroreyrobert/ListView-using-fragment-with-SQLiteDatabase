@@ -5,5 +5,8 @@
 
     <item
         android:id="@+id/edit"
-        android:title="@string/long_press_menu"/>
+        android:title= "@string/long_press_menu_edit"/>
+    <item
+        android:id="@+id/delete"
+        android:title="@string/long_press_menu_delete"/>
 </menu>

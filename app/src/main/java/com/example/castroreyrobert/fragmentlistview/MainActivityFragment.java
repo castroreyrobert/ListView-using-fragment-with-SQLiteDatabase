@@ -77,12 +77,27 @@ public class MainActivityFragment extends ListFragment {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int rowPosition = info.position;
 
+        //For deleting purposes
+        NoteModel noteModel = (NoteModel) getListAdapter().getItem(rowPosition);
+
         //If the user clicks the specific menu item
         switch (item.getItemId()){
 
             case R.id.edit:
                 launchNoteDetailActivity(MainActivity.FRAGMENT_TO_LOAD.EDIT, rowPosition);
                 return true;
+
+            case R.id.delete:
+                DBHelper dbHelper = new DBHelper(getActivity().getBaseContext());
+                dbHelper.open();
+                dbHelper.deleteNote(noteModel.getId());
+
+                //For refreshing the listview if we click the menu item delete
+                noteModelArrayList.clear();
+                noteModelArrayList.addAll(dbHelper.getAllNotes());
+                noteAdapter.notifyDataSetChanged();
+
+                dbHelper.close();
         }
 
         return super.onContextItemSelected(item);

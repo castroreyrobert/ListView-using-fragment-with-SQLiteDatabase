@@ -63,8 +63,10 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(FRAGMENT_TO_LAUNCH, FRAGMENT_TO_LOAD.ADD);
             startActivity(intent);
             return true;
+
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 }

@@ -81,6 +81,11 @@ public class DBHelper{
 
     }
 
+    public long deleteNote(long idToDelete){
+        return db.delete(TB_NAME, COL_ID + " = " + idToDelete, null);
+
+    }
+
 
     //This method gets called in displaying the notes in the ListView
     public ArrayList<NoteModel> getAllNotes(){
