@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.castroreyrobert.fragmentlistview">
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,9 +20,12 @@
         </activity>
         <activity
             android:name=".NoteDetailActivity"
-            android:parentActivityName=".MainActivity"
-            android:label="@string/toolbar_title_edit">
-        </activity>
+            android:label="@string/toolbar_title_edit"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".AppPreferences"
+            android:label="@string/toolbar_title_setting"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

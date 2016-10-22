@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FragmentListView</string>
+    <string name="app_name">Notes</string>
 
     <!-- Menu title -->
     <string name="action_settings">Settings</string>
@@ -11,14 +11,14 @@
     <string name="toolbar_title_view">View Note</string>
     <string name="toolbar_title_edit">Edit Note</string>
     <string name="toolbar_title_add">Add Note</string>
+    <string name="toolbar_title_setting">Settings</string>
 
     <!-- Menu title -->
     <string name="long_press_menu_edit">Edit</string>
     <string name="long_press_menu_delete">Delete</string>
 
     <!-- Buttons title -->
-    <string name = "button_save">Save</string>
-
+    <string name="button_save">Save</string>
 
 
 </resources>
