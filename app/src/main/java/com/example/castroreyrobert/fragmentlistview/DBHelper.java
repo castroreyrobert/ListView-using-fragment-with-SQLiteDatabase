@@ -75,7 +75,7 @@ public class DBHelper{
         contentValues.put(COL_TITLE, title);
         contentValues.put(COL_NOTE, note);
         contentValues.put(COL_CATEGORY, category.name() + "");
-        contentValues.put(COL_DATE, Calendar.getInstance().getTimeInMillis() + "");
+        contentValues.put(COL_DATE, Calendar.getInstance().getTimeInMillis()+ "");
 
         return db.update(TB_NAME, contentValues, COL_ID + " = " + idToUpdate, null);
 

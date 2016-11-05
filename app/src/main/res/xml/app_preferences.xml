@@ -15,7 +15,7 @@
         android:title="Color">
 
         <CheckBoxPreference
-            android:title="Dark Blue"
+            android:title="Yellow"
             android:summary="Set the background Color of the Note"
             android:key="background_color"
             android:defaultValue="false"/>

@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         loadPreferences();
+
     }
 
     @Override
@@ -83,10 +85,11 @@ public class MainActivity extends AppCompatActivity {
         if (isBackgroundDark){
             LinearLayout mainLayout = (LinearLayout)findViewById(R.id.content_main);
             mainLayout.setBackgroundColor(Color.parseColor("#F0F4C3"));
+            mainLayout.refreshDrawableState();
+
         }
 
         //For the title setting
-
         String title = sharedPreferences.getString("title", "Notes");
         setTitle(title);
 

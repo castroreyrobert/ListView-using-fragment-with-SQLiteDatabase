@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.DialogTitle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,8 @@ public class NoteEditFragment extends Fragment {
     private EditText etTitle, etNote;
     private ImageButton imageIcon;
     private NoteModel.Category savedButtonCategory;
+
+    //Object for the alertDialog
     private AlertDialog categoryAlertDialogObject, confirmAlertDialogObject;
 
     private long noteID = 0;
@@ -68,8 +71,10 @@ public class NoteEditFragment extends Fragment {
 
         //Setting the values from the views for this fragment
         //Getting the values from the intent that we passed from the MainActivityFragment
-        etTitle.setText(intent.getExtras().getString(MainActivity.NOTE_TITLE,""));
-        etNote.setText(intent.getExtras().getString(MainActivity.NOTE_NOTE, ""));
+        etTitle.setText(intent.getExtras().getString(MainActivity.NOTE_TITLE));
+        etTitle.setHint("Title here......");
+        etNote.setText(intent.getExtras().getString(MainActivity.NOTE_NOTE));
+        etNote.setHint("Notes here.....");
         noteID = intent.getExtras().getLong(MainActivity.NOTE_ID,0);
 
         //If the user change the orientation, the imageButton should stay what it has
@@ -124,7 +129,7 @@ public class NoteEditFragment extends Fragment {
 
     //creating a dialog builder when the user clicks the imageButton
     private void createCategoryDialogBuilder(){
-        final String [] categories = new String[]{"Personal", "Technical", "Quote", "Finance"};
+        final String [] categories = new String[]{"Personal", "Technical", "Android", "Home"};
         final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
         alertBuilder.setTitle("Choose a category");
 
@@ -139,19 +144,19 @@ public class NoteEditFragment extends Fragment {
                 switch (item){
                     case 0:
                         savedButtonCategory = NoteModel.Category.PERSONAL;
-                        imageIcon.setImageResource(R.drawable.notesfour);
+                        imageIcon.setImageResource(R.drawable.personal);
                         break;
                     case 1:
                         savedButtonCategory = NoteModel.Category.TECHNICAL;
-                        imageIcon.setImageResource(R.drawable.noteone);
+                        imageIcon.setImageResource(R.drawable.technical);
                         break;
                     case 2:
-                        savedButtonCategory = NoteModel.Category.QUOTE;
-                        imageIcon.setImageResource(R.drawable.notesthree);
+                        savedButtonCategory = NoteModel.Category.ANDROID;
+                        imageIcon.setImageResource(R.drawable.android);
                         break;
                     case 3:
-                        savedButtonCategory = NoteModel.Category.FINANCE;
-                        imageIcon.setImageResource(R.drawable.notestwo);
+                        savedButtonCategory = NoteModel.Category.HOME;
+                        imageIcon.setImageResource(R.drawable.home);
                         break;
                 }
             }

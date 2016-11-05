@@ -1,10 +1,14 @@
 package com.example.castroreyrobert.fragmentlistview;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 public class NoteDetailActivity extends AppCompatActivity {
 
@@ -17,6 +21,7 @@ public class NoteDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_note_detail);
 
         createAddFragment();
+        loadPreferences();
     }
 
     //Adding the fragment dynamically
@@ -35,7 +40,7 @@ public class NoteDetailActivity extends AppCompatActivity {
             case EDIT:
                 //Setting the name of the layout of the fragment
                 NoteEditFragment noteEditFragment = new NoteEditFragment();
-                fragmentTransaction.add(R.id.activity_note_detail_linearlayout, noteEditFragment,
+                fragmentTransaction.add(R.id.noteDetailLayout, noteEditFragment,
                         "NOTE_EDIT_FRAGMENT");
                 setTitle(R.string.toolbar_title_edit);
 
@@ -43,7 +48,7 @@ public class NoteDetailActivity extends AppCompatActivity {
             case VIEW:
                 //Setting the name of the layout of the fragment
                 NoteViewFragment noteViewFragment = new NoteViewFragment();
-                fragmentTransaction.add(R.id.activity_note_detail_linearlayout, noteViewFragment,
+                fragmentTransaction.add(R.id.noteDetailLayout, noteViewFragment,
                         "NOTE_VIEW_FRAGMENT");
 
                 //setting the toolbar title
@@ -52,7 +57,7 @@ public class NoteDetailActivity extends AppCompatActivity {
 
             case ADD:
                 NoteEditFragment noteAddEditFragment = new NoteEditFragment();
-                fragmentTransaction.add(R.id.activity_note_detail_linearlayout, noteAddEditFragment,
+                fragmentTransaction.add(R.id.noteDetailLayout, noteAddEditFragment,
                         "NOTE_ADD_FRAGMENT");
 
                 //Passing the value to the NoteEdit Fragment inorder to know if we need to add a new note
@@ -68,4 +73,24 @@ public class NoteDetailActivity extends AppCompatActivity {
 
 
     }
+
+    //Loading the preference from the app_preferences.xml
+    private void loadPreferences(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        boolean isBackgroundDark = sharedPreferences.getBoolean("background_color", false);
+
+        //For the background color settings
+        if (isBackgroundDark){
+            LinearLayout noteDetailLayout = (LinearLayout) findViewById(R.id.noteDetailLayout);
+            noteDetailLayout.setBackgroundColor(Color.parseColor("#F0F4C3"));
+            noteDetailLayout.refreshDrawableState();
+        }
+
+        //For the title setting
+        String title = sharedPreferences.getString("title", "Notes");
+        setTitle(title);
+
+    }
+
 }

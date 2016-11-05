@@ -12,7 +12,7 @@
         android:id="@+id/imageButtonIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/noteone"
+        android:src="@drawable/personal"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_marginEnd="15dp"

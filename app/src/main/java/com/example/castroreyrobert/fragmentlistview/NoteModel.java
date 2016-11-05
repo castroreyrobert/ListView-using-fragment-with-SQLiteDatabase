@@ -8,7 +8,7 @@ public class NoteModel {
     private Category category;
 
     //Setting the title of Category
-    public enum Category{PERSONAL, TECHNICAL, QUOTE, FINANCE}
+    public enum Category{PERSONAL, TECHNICAL, ANDROID, HOME}
 
     public NoteModel(String title, String note, Category category) {
         this.title = title;
@@ -25,6 +25,7 @@ public class NoteModel {
         this.dateCreatedMilli = dateCreatedMilli;
         this.category = category;
     }
+
 
     public long getId() {
         return id;
@@ -58,15 +59,15 @@ public class NoteModel {
 
         switch (noteCategory){
             case PERSONAL:
-                return R.drawable.notesfour;
+                return R.drawable.personal;
             case TECHNICAL:
-                return R.drawable.noteone;
-            case QUOTE:
-                return R.drawable.notesthree;
-            case FINANCE:
-                return R.drawable.notestwo;
+                return R.drawable.technical;
+            case ANDROID:
+                return R.drawable.android;
+            case HOME:
+                return R.drawable.home;
         }
 
-        return R.drawable.notestwo;
+        return R.drawable.personal;
     }
 }

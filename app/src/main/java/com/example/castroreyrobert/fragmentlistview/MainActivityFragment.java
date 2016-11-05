@@ -39,9 +39,7 @@ public class MainActivityFragment extends ListFragment {
         dbHelper.open();
         noteModelArrayList = dbHelper.getAllNotes();
         dbHelper.close();
-
         noteAdapter = new NoteAdapter(getActivity(),noteModelArrayList);
-
         setListAdapter(noteAdapter);
 
        /* //setting the divider of the listview
