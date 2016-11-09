@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -24,15 +23,6 @@ public class MainActivityFragment extends ListFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-       /* //Items on the listview
-        String [] android_versions = new String[]{"Nougat", "Lollipop", "Kitkat", "JellyBean"};
-
-
-        //Setting the adapter to the listview
-        ArrayAdapter<String>  adapter= new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,
-                android_versions);
-
-        setListAdapter(adapter);*/
 
         //Adding the values of the notes from the DBHelper
         DBHelper dbHelper = new DBHelper(getActivity().getBaseContext());
@@ -41,10 +31,6 @@ public class MainActivityFragment extends ListFragment {
         dbHelper.close();
         noteAdapter = new NoteAdapter(getActivity(),noteModelArrayList);
         setListAdapter(noteAdapter);
-
-       /* //setting the divider of the listview
-        getListView().setDivider(ContextCompat.getDrawable(getActivity(), android.R.color.darker_gray));
-        getListView().setDividerHeight(1);*/
 
         //Displaying the menu if the user long click the item in the listview
         registerForContextMenu(getListView());
